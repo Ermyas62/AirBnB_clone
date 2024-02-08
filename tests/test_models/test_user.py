@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines unit tests for models/user.py."""
+""" Defines unit tests for user.py."""
 import os
 import models
 import unittest
