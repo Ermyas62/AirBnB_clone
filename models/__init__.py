@@ -3,5 +3,5 @@
 
 
 from .engine.file_storage import FileStorage
-storage = FileStorgae()
+storage = FileStorage()
 storage.reload()

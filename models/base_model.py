@@ -4,8 +4,8 @@
 """
 
 from datetime import datetime
-import uuid
 import models
+import uuid
 
 
 class BaseModel:
@@ -29,7 +29,7 @@ class BaseModel:
         if kwargs is not None or len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
-                    self.__dict__[key] =datetime.strptime(value, DT_FMT)
+                    self.__dict__[key] = datetime.strptime(value, DT_FMT)
                 else:
                     self.__dict__[key] = value
         else:
@@ -44,14 +44,14 @@ class BaseModel:
 
     def save(self):
         """
-            save the instance in the storage engine.
+            Updates ''updated_at'' with the current datetime.
         """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """
-        Returns a dictionary containg all key/values
+        Returns a dictionary containg all key/values of __dict__
         """
 
     my_dict = self.__dict__.copy()
