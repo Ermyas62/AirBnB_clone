@@ -23,7 +23,7 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """Sets in __objects the obj with key <obj class name>/id """
+        """Sets in __objects the obj with key <obj class name>.id """
         key = "{}.{}".format(type(obj).__name__, obj.id)
         self.__objects[key] = obj
 
@@ -38,7 +38,7 @@ class FileStorage:
         if path.exists(self.__file_path) is True:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 obj_d = json.load(f)
-                for obj in onj_d.values():
+                for obj in obj_d.values():
                     cls = obj["__class__"]
                     self.new(eval(cls)(**obj))
 
