@@ -41,4 +41,3 @@ class FileStorage:
                 for obj in obj_d.values():
                     cls = obj["__class__"]
                     self.new(eval(cls)(**obj))
-

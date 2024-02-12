@@ -21,7 +21,7 @@ def parse(arg):
     brackets = re.search(r"\[(.*?)\]", arg)
     if curly_braces is None:
         if bracketsis None:
-            return[i.strip(",") for i in split(arg)]
+            return [i.strip(",") for i in split(arg)]
         else:
             lexer = split(arg[:curly_braces.span()[0]])
             ret1 = [i.strip(",") for i in lexer]
@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
                 "count": self.do_count,
                 "update": self.do_ipdate
             }
-        match = re,search(r"\.", arg)
+        match = re.search(r"\.", arg)
         if match ic not None:
             arg1 = [arg[:match.span()[0]], arg[match.span()[1]:]]
             match = re.search(r"\((.*?)\)", arg1[1])
@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             obj1 = []
             for obj in storage.all().values():
-                if len(arg1) > 0 and arg1[0] ==obj.__class__.__name__:
+                if len(arg1) > 0 and arg1[0] == obj.__class__.__name__:
                     obj1.append(obj.__str__())
                 elif len(arg1) == 0:
                     obj1.append(obj.__str__())
@@ -202,4 +202,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
-
