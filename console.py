@@ -20,8 +20,13 @@ def parse(arg):
     curly_braces = re.search(r"\{(.*))", arg)
     brackets = re.search(r"\[(.*?)\]", arg)
     if curly_braces is None:
-        if bracketsis None:
+        if brackets is None:
             return [i.strip(",") for i in split(arg)]
+        else:
+            lexer = split(arg[:brackets.span()[0]])
+            ret1 = [i.strip(",") for i in lexer]
+            ret1.append(brackets.group())
+            return ret1
         else:
             lexer = split(arg[:curly_braces.span()[0]])
             ret1 = [i.strip(",") for i in lexer]
@@ -58,10 +63,10 @@ class HBNBCommand(cmd.Cmd):
                 "show": self.do_show,
                 "destroy": self.do_destroy,
                 "count": self.do_count,
-                "update": self.do_ipdate
+                "update": self.do_update
             }
         match = re.search(r"\.", arg)
-        if match ic not None:
+        if match is not None:
             arg1 = [arg[:match.span()[0]], arg[match.span()[1]:]]
             match = re.search(r"\((.*?)\)", arg1[1])
             if match is not None:
